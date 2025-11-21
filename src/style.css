@@ -3,3 +3,11 @@
   vertical-align: top;
   border: 1px solid salmon;
 }
+
+#clickButton {
+  box-shadow:
+    0 0 0 8px #ffb3b3 inset,
+    0 0 0 16px #ffb3b3 inset,
+    0 0 0 24px #ffb3b3 inset,
+    8px 8px 0 0 #b22222;
+}
