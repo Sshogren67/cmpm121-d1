@@ -1,5 +1,6 @@
 import "./style.css";
 
+// Item Data Type
 interface Item {
   name: string;
   baseCost: number;
@@ -10,6 +11,7 @@ interface Item {
   buttonEl?: HTMLButtonElement;
 }
 
+// Available Items Configuration
 const availableItems: Item[] = [
   {
     name: "Pie Tin Converter",
@@ -83,6 +85,7 @@ class ClickerGame {
     }, 200);
   }
 
+  // Setup DOM
   private setupDOM(): void {
     document.body.style.margin = "0";
     document.body.style.height = "100vh";
@@ -154,6 +157,7 @@ class ClickerGame {
     document.head.appendChild(style);
   }
 
+  // Event Listeners
   private clickTimestamps: number[] = [];
 
   private attachEventListeners(): void {
@@ -177,6 +181,7 @@ class ClickerGame {
     });
   }
 
+  // Calculate Clicks Per Second (CPS)
   private getCPS(): number {
     const now = Date.now();
     this.clickTimestamps = this.clickTimestamps.filter((ts) => now - ts < 1000);
@@ -187,6 +192,7 @@ class ClickerGame {
     return cps;
   }
 
+  // Update Display
   private updateDisplay(): void {
     // Update main counter and CPS display as usual
     this.counterEl.textContent = `Frisbees: ${this.clicks}`;
@@ -203,6 +209,7 @@ class ClickerGame {
   }
 }
 
+// Game Initialization
 // Bootstrap the game when DOM is ready
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => new ClickerGame());
