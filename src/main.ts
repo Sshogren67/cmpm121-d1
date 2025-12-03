@@ -161,10 +161,22 @@ class ClickerGame {
   private clickTimestamps: number[] = [];
 
   private attachEventListeners(): void {
-    this.clickButtonEl.addEventListener("click", () => {
+    this.clickButtonEl.addEventListener("click", (event) => {
       this.clicks++;
       this.clickTimestamps.push(Date.now());
       this.updateDisplay();
+
+      // Sparkle Animation inspired by Melissa21-R's incremental game.
+      // Create sparkle effect
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.textContent = "✨";
+      sparkle.style.left = `${event.clientX}px`;
+      sparkle.style.top = `${event.clientY}px`;
+      document.body.appendChild(sparkle);
+
+      // Remove sparkle after animation completes
+      setTimeout(() => sparkle.remove(), 1000);
     });
 
     availableItems.forEach((item) => {
