@@ -60,6 +60,7 @@ const availableItems: Item[] = [
 
 class ClickerGame {
   private clicks = 0;
+  private clickSound!: HTMLAudioElement;
 
   private counterEl!: HTMLDivElement;
   private clickButtonEl!: HTMLButtonElement;
@@ -119,6 +120,8 @@ class ClickerGame {
     this.clickButtonEl.style.transition = "transform 0.1s";
     this.clickButtonEl.textContent = "Make Frisbee 🥏!";
 
+    this.clickSound = new Audio("/src/assets/computer-mouse-click-352734.mp3");
+
     availableItems.forEach((item) => {
       const btn = document.createElement("button");
       btn.style.width = "150px";
@@ -165,6 +168,11 @@ class ClickerGame {
       this.clicks++;
       this.clickTimestamps.push(Date.now());
       this.updateDisplay();
+
+      // Click Sound inspired by pI0the's incremental game.
+      // Play click sound
+      this.clickSound.currentTime = 0; // Reset to start for rapid clicks
+      this.clickSound.play();
 
       // Sparkle Animation inspired by Melissa21-R's incremental game.
       // Create sparkle effect
